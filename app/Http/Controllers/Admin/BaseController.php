@@ -13,6 +13,10 @@ class BaseController extends Controller
 		return view('admin/test');
 	}
 
+	public function test() {
+		return view('admin/test');
+	}
+
 	public function getUsers() {
 		return view('admin/users', [
 			'users' => User::withTrashed()->orderBy('id')->get(),
