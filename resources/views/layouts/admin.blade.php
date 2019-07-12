@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1,
 		shrink-to-fit=no">
-	<title>Stellar Admin</title>
+	<title>{{ env('APP_NAME') }} – admin</title>
 	<link rel="stylesheet" href="http://www.bootstrapdash.com/demo/stellar-admin/jquery/css/style.css">
 </head>
 
@@ -86,7 +86,7 @@
 					<img src="images/logo.svg" alt="logo">
 				</a>
 				<a class="navbar-brand brand-logo-mini" href="{{ route('admin') }}">
-					<img src="images/logo_mini.svg" alt="logo">
+					<img src="images/logo_mini.svg" alt="sm-l">
 				</a>
 			</div>
 			<div class="navbar-menu-wrapper d-flex align-items-center">
