@@ -19,7 +19,10 @@ class BaseController extends Controller
 
 	public function getUsers() {
 		return view('admin/users', [
-			'users' => User::withTrashed()->orderBy('id')->get(),
+			'users' => User::withTrashed()
+				->orderBy('id')
+				->paginate(env('USER_PAGINATION')),
+			'count' => User::count(),
 		]);
 	}
 

@@ -1,18 +1,18 @@
 @extends ('layouts.admin')
 
 @section ('content')
-	<h2 class="card-title">Count of users – {{ $users->count() }}</h2>
+	<h2 class="card-title">Count of users – {{ $count }}</h2>
 
 	<div class="table-responsive">
 	<table class="table table-hover">
 		<caption>List of users</caption>
 		<thead class="thead-dark">
-			<th scope="col">id</th>
+			<th scope="col">nr.</th>
 			<th scope="col">Name</th>
 			<th scope="col">Email</th>
 			<th scope="col">Role</th>
-			<th scope="col">Join at (Kyiv)</th>
-			<th scope="col"></th>
+			<th scope="col">Edit</th>
+			<th scope="col">Delete</th>
 		</thead>
 		<tbody>
 
@@ -34,18 +34,14 @@
 				@endif
 
 				<td>
-					{{ $user
-						->created_at
-						->setTimezone('Europe/Kiev')
-						->format('d/m/Y, H:m')
-					}}
-				</td>	
+					<i class="fas fa-edit"></i>
+				</td>
 				<td>
 			@if ($user->deleted_at != null)
 				<form action="{{ route('admin.restore.user', $user->id) }}"
 						method="post">
 					<button class="btn btn-dark">
-						restore
+						<i class="fas fa-trash-restore"></i>
 					</button>
 					@method ('patch')
 					@csrf
@@ -54,7 +50,7 @@
 				<form action="{{ route('admin.delete.user', $user->id) }}"
 						method="post">
 					<button class="btn btn-danger" method="post">
-						delete
+						<i class="fas fa-trash"></i>
 					</button>
 					@method ('delete')
 					@csrf
@@ -66,5 +62,7 @@
 
 		</tbody>
 	</table>
+
+	{{ $users->links() }}
 	</div>
 @endsection
