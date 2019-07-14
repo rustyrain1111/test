@@ -40,7 +40,8 @@
 			@if ($user->deleted_at != null)
 				<form action="{{ route('admin.restore.user', $user->id) }}"
 						method="post">
-					<button class="btn btn-dark">
+					<button class="btn btn-dark"
+							onclick="return confirm('Restore this user?')">
 						<i class="fas fa-trash-restore"></i>
 					</button>
 					@method ('patch')
@@ -49,7 +50,8 @@
 			@else
 				<form action="{{ route('admin.delete.user', $user->id) }}"
 						method="post">
-					<button class="btn btn-danger" method="post">
+					<button class="btn btn-danger"
+							onclick="return confirm('You realy want to kill this user?')">
 						<i class="fas fa-trash"></i>
 					</button>
 					@method ('delete')
