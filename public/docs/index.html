@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Novanoid 1 Documentation</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="img/favicon.png">
+
+	<link rel="stylesheet" href="css/prettify.css" />
+	<link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+	<div id="navbar">
+		<div class="container">
+			<a class="navbar-logo" href="index.html"><img src="img/logo.png" alt=""></a>
+			<ul class="navbar-items">
+				<li><a target="_blank" href="http://demo.rommar.in.ua/novanoid/novanoid-1">Live Preview</a></li>
+			</ul> <!-- /.navbar-items -->
+		</div> <!-- /.container -->
+	</div> <!-- /#navbar -->
+
+	<div id="main">
+		<div class="container">
+			<div id="sidebar">
+				<ul>
+					<li>
+						<a href="#section-introduction">Introduction</a>
+						<ul>
+							<li><a href="#section-introduction-included">What's Included</a></li>
+							<li><a href="#section-introduction-install">Install</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#section-html">HTML</a>
+						<ul>
+							<li><a href="#section-html-header">Header</a></li>
+							<li><a href="#section-html-features">Features</a></li>
+							<li><a href="#section-html-works">Works</a></li>
+							<li><a href="#section-html-services">Services</a></li>
+							<li><a href="#section-html-parallax">Parallax</a></li>
+							<li><a href="#section-html-team">Team</a></li>
+							<li><a href="#section-html-prices">Prices</a></li>
+							<li><a href="#section-html-blog">Blog</a></li>
+							<li><a href="#section-html-contacts">Contacts</a></li>
+							<li><a href="#section-html-footer">Footer</a></li>
+						</ul>
+					</li>
+					<li><a href="#section-css">CSS</a></li>
+					<li><a href="#section-javascript">JavaScript</a></li>
+					<li><a href="#section-credits">Credits</a></li>
+				</ul>
+			</div> <!-- /#sidebar -->
+
+			<div id="content">
+				<!-- BEGIN INTRODUCTION -->
+				<h1 id="section-introduction" class="section-begin">Introduction</h1> <!-- /#section-introduction -->
+				<p class="lead">This part will help you quick start with template. In this section, you will learn that includes a template and how to install template to web-server.</p> <!-- /.lead -->
+
+				<h2 id="section-introduction-included">What's Included</h2> <!-- /#section-introduction-included -->
+				<p>Archive of the template has a standard structure of any html template. Once you have download the package you will see the following folder structure:</p>
+				<ul class="files-structure">
+					<li class="folder">css</li> <!-- /.folder -->
+					<li class="folder">docs</li> <!-- /.folder -->
+					<li class="folder">fonts</li> <!-- /.folder -->
+					<li class="folder">img</li> <!-- /.folder -->
+					<li class="folder">js</li> <!-- /.folder -->
+					<li class="folder">psd</li> <!-- /.folder -->
+					<li class="file">blog.html</li> <!-- /.file -->
+					<li class="file">contact_me.php</li> <!-- /.file -->
+					<li class="file">index.html</li> <!-- /.file -->
+				</ul> <!-- /.files-structure -->
+
+				<h3>css</h3>
+				<p>This folder contains style files that include to index page and has structure:</p>
+				<ul class="files-structure">
+					<li class="file">animate.css</li> <!-- /.file -->
+					<li class="file">bootstrap.min.css</li> <!-- /.file -->
+					<li class="file">font-awesome.min.css</li> <!-- /.file -->
+					<li class="file">magnific-popup.css</li> <!-- /.file -->
+					<li class="file">owl.carousel.css</li> <!-- /.file -->
+					<li class="file">owl.theme.css</li> <!-- /.file -->
+					<li class="file">responsive.css</li> <!-- /.file -->
+					<li class="file">style.css</li> <!-- /.file -->
+					<li class="file">style-2.css</li> <!-- /.file -->
+					<li class="file">style-3.css</li> <!-- /.file -->
+					<li class="file">style-4.css</li> <!-- /.file -->
+					<li class="file">style-5.css</li> <!-- /.file -->
+					<li class="file">style-6.css</li> <!-- /.file -->
+					<li class="file">style-7.css</li> <!-- /.file -->
+					<li class="file">style-8.css</li> <!-- /.file -->
+					<li class="file">style-switcher.css</li> <!-- /.file -->
+				</ul> <!-- /.files-structure -->
+
+				<h3>docs</h3>
+				<p>This folder contains detailed documentation of template.</p>
+
+				<h3>fonts</h3>
+				<p>As the template used icons font called FontAwesome, this folder contains fonts:</p>
+				<ul class="files-structure">
+					<li class="file">FontAwesome.otf</li> <!-- /.file -->
+					<li class="file">fontawesome-webfont.eot</li> <!-- /.file -->
+					<li class="file">fontawesome-webfont.svg</li> <!-- /.file -->
+					<li class="file">fontawesome-webfont.ttf</li> <!-- /.file -->
+					<li class="file">fontawesome-webfont.woff</li> <!-- /.file -->
+				</ul> <!-- /.files-structure -->
+
+				<h3>img</h3>
+				<p>This folder contains all images that used in template.</p>
+
+				<h3>js</h3>
+				<p>This folder contains plugins, that include to page and file with user's scripts:</p>
+				<ul class="files-structure">
+					<li class="file">bootstrap.min.js</li> <!-- /.file -->
+					<li class="file">imagesloaded.pkgd.min.js</li> <!-- /.file -->
+					<li class="file">isotope.pkgd.min.js</li> <!-- /.file -->
+					<li class="file">jquery.counterup.min.js</li> <!-- /.file -->
+					<li class="file">jquery.magnific-popup.min.js</li> <!-- /.file -->
+					<li class="file">jquery.sticky.js</li> <!-- /.file -->
+					<li class="file">jquery-2.1.1.min.js</li> <!-- /.file -->
+					<li class="file">owl.carousel.min.js</li> <!-- /.file -->
+					<li class="file">waypoints.min.js</li> <!-- /.file -->
+					<li class="file">wow.min.js</li> <!-- /.file -->
+					<li class="file">scripts.js</li> <!-- /.file -->
+				</ul> <!-- /.files-structure -->
+
+				<h3>psd</h3>
+				<p>This folder contains Photoshop source file.</p>
+
+				<h3>blog.html</h3>
+				<p>Blog page.</p>
+
+				<h3>contact_me.php</h3>
+				<p>PHP script which is responsible for sending letters from feedback form.</p>
+
+				<h3>index.html</h3>
+				<p>Immediately page template.</p>
+
+				<h2 id="section-introduction-install">Install</h2> <!-- /#section-introduction-install -->
+				<p>To begin, it is very important to understand that you must either have your own server space or use someone else’s.  The server space can be purchased at many different places around the internet.  You need somewhere to put the files that you purchased so others can find them online.</p>
+
+				<p>Installation it's just transferring template files to remote server of your hosting. In order to transfer your files to server you can use different FTP clients (e.g. FileZilla). How to upload files to server with FileZilla you can read <a target="_blank" href="https://wiki.filezilla-project.org/FileZilla_Client_Tutorial_%28en%29">here</a>. You should upload the contents of an archive to root directory.</p>
+				<!-- END INTRODUCTION -->
+
+
+				<!-- BEGIN HTML -->
+				<h1 id="section-html" class="section-begin">HTML</h1> <!-- /#section-html.section-begin -->
+				<p>Template has simple structure with different sections:</p>
+				<ol>
+					<li>Header</li>
+					<li>Features</li>
+					<li>Works</li>
+					<li>Services</li>
+					<li>Parallax</li>
+					<li>Team</li>
+					<li>Prices</li>
+					<li>Blog</li>
+					<li>Contacts</li>
+					<li>Footer</li>
+				</ol>
+
+				<h2 id="section-html-header">Header</h2> <!-- /#section-html-header -->
+				<p>Header consists of 2 main sections: navigation and content section. If you want change background image of header, you should replace appropriate image in <b>img</b> directory. All header images begin with <b>header</b>. Also you can add new background image, you should add new class, for example, <b>header-7</b> and add background image to this class in main CSS file.</p>
+				<img class="template-part-image" src="img/header.png" alt="" />
+
+				<h3>Navigation</h3>
+				<p>The template uses the standart <a href="http://getbootstrap.com" target="_blank">Bootstrap</a> navigation structure.</p>
+				<pre class="prettyprint">&lt;nav class="navbar normal indents" role="navigation"&gt;
+	&lt;div class="navbar-header"&gt;
+		&lt;button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"&gt;
+			&lt;i class="fa fa-bars"&gt;&lt;/i&gt;
+		&lt;/button&gt;
+		&lt;a class="navbar-brand" href="index.html"&gt;&lt;/a&gt;
+	&lt;/div&gt; &lt;!-- navbar-header --&gt;
+	&lt;div class="navbar-collapse collapse"&gt;
+		&lt;ul class="nav navbar-nav navbar-right"&gt;
+			&lt;li class="current"&gt;&lt;a class="scroll" href="#home"&gt;home&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a class="scroll" href="#works"&gt;works&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a class="scroll" href="#services"&gt;services&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a class="scroll" href="#team"&gt;team&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a class="scroll" href="#prices"&gt;prices&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a class="scroll" href="#blog"&gt;blog&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a class="scroll" href="#contacts"&gt;contacts&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+&lt;/nav&gt;</pre>
+				<p>In order to add a new navigation item, just add a new <code>&lt;li&gt;&lt;/li&gt;</code></p>
+
+				<h3>Content Section</h3>
+				<p>Content section located in class called <b>caption</b>. Template has 3 different messages of content in header, which vary. They vary due to the carousel.</p>
+				<pre class="prettyprint">&lt;div class="caption"&gt;
+	&lt;div class="item"&gt;
+		&lt;h1&gt;novanoid&lt;/h1&gt;
+		&lt;p&gt;simple minimal.&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class="item"&gt;
+		&lt;h1&gt;minimalism&lt;/h1&gt;
+		&lt;p&gt;simple minimal.&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class="item"&gt;
+		&lt;h1&gt;creative&lt;/h1&gt;
+		&lt;p&gt;simple minimal.&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</pre>
+				<p>If you want add new item, you should add new <code>&lt;div class="item"&gt;&lt;/div&gt;</code> and fill content.</p>
+
+				<h2 id="section-html-features">Features</h2> <!-- /#section-html-features -->
+				<p>This section has 2 rows. Each row has 3 big columns with element. Each big columns takes 4 bootstrap columns (3 is multiplied by 4 is equal to 12). One row takes 12 columns.</p>
+				<img class="template-part-image" src="img/features.png" alt="" />
+				<p>If you want add new item to this section, you should add new row, and then add one big column that takes 4 bootstrap columns. Example:</p>
+				<pre class="prettyprint">
+&lt;div class="row"&gt;
+	&lt;!--YOUR NEW ITEM--&gt;
+	&lt;div class="col-sm-4"&gt;
+		&lt;div class="item"&gt;
+			&lt;i class="fa fa-leaf"&gt;&lt;/i&gt; &lt;!--icon--&gt;
+			&lt;div class="text"&gt;
+				&lt;h2&gt;title&lt;/h2&gt;
+				&lt;p&gt;Your description.&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;!--YOUR NEW ITEM--&gt;
+&lt;/div&gt;</pre>
+
+				<h2 id="section-html-works">Works</h2> <!-- /#section-html-works -->
+				<p>Works section has 2 main parts: filter buttons and list of works.</p>
+				<img class="template-part-image" src="img/works.png" alt="" />
+
+				<h3>Filter Buttons</h3>
+				<p>Buttons has list structure.</p><pre class="prettyprint">&lt;div class="row"&gt;
+	&lt;div class="col-md-12"&gt;
+		&lt;ul class="filters"&gt;
+			&lt;li class="active" data-filter="*"&gt;all&lt;/li&gt;
+			&lt;li data-filter="cat-1"&gt;travel&lt;/li&gt;
+			&lt;li data-filter="cat-2"&gt;road&lt;/li&gt;
+			&lt;li data-filter="cat-3"&gt;mountains&lt;/li&gt;
+			&lt;li data-filter="cat-4"&gt;nature&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+&lt;/div&gt; &lt;!-- row --&gt;</pre>
+				<p>If you want add new button (new category), you should add new <code>&lt;li&gt;&lt;/li&gt;</code>.Example:</p><pre class="prettyprint">&lt;li data-filter="cat-5"&gt;name of category&lt;/li&gt;</pre>
+				<h3>List of Works</h3>
+				<p>List of works has structure of big list called <b>grid</b>. Each work it's list item called <b>item</b>. In this template section on works has 3 rows, and each row has 3 items (2 items are small and 1 item is big). Structure of one row of items:</p><pre class="prettyprint">&lt;ul class="grid"&gt;
+	&lt;!--ITEM 1--&gt;
+	&lt;li class="item cat-1 cat-4"&gt;
+		&lt;a href="img/pic-full.jpg"&gt;
+			&lt;div class="image"&gt;
+				&lt;img src="img/work-1.jpg" alt="Work Picture"&gt;
+				&lt;div class="overlay"&gt;
+					&lt;h3&gt;title&lt;span&gt;&lt;/span&gt;&lt;/h3&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;!--ITEM 1--&gt;
+
+	&lt;!--ITEM 2--&gt;
+	&lt;li class="item cat-2 cat-3"&gt;
+		&lt;a href="img/pic-full.jpg"&gt;
+			&lt;div class="image"&gt;
+				&lt;img src="img/work-2.jpg" alt="Work Picture"&gt;
+				&lt;div class="overlay"&gt;
+					&lt;h3&gt;title&lt;span&gt;&lt;/span&gt;&lt;/h3&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;!--ITEM 2--&gt;
+
+	&lt;!--ITEM 3--&gt;
+	&lt;li class="item big cat-1 cat-3"&gt;
+		&lt;a href="img/pic-full.jpg"&gt;
+			&lt;div class="image"&gt;
+				&lt;img src="img/work-3.jpg" alt="Work Picture"&gt;
+				&lt;div class="overlay"&gt;
+					&lt;h3&gt;title&lt;span&gt;&lt;/span&gt;&lt;/h3&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;!--ITEM 3--&gt;
+&lt;/ul&gt;</pre>
+				<p>If you want add new work, you should add new <code>&lt;li&gt;&lt;/li&gt;</code> element to list. Example:</p><pre class="prettyprint">&lt;!--YOUR NEW ITEM--&gt;
+&lt;li class="item cat-1 cat-4"&gt;
+	&lt;a href="img/pic-full.jpg"&gt;
+		&lt;div class="image"&gt;
+			&lt;img src="img/work-1.jpg" alt="Work Picture"&gt;
+			&lt;div class="overlay"&gt;
+				&lt;h3&gt;title&lt;span&gt;&lt;/span&gt;&lt;/h3&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/a&gt;
+&lt;/li&gt;
+&lt;!--YOUR NEW ITEM--&gt;</pre>
+				<p>To make a big item, you should add class <b>big</b> to <code>&lt;li&gt;&lt;/li&gt;</code> element.</p>
+
+				<h2 id="section-html-services">Services</h2> <!-- /#section-html-services -->
+				<p>This section has 2 rows. Each row has 3 big columns with element. Each big columns takes 4 bootstrap columns (3 is multiplied by 4 is equal to 12). One row takes 12 columns.</p>
+				<img class="template-part-image" src="img/services.png" alt="" />
+				<p>If you want add new item to this section, you should add new row, and then add one big column that takes 4 bootstrap columns. Example:</p>
+				<pre class="prettyprint">&lt;div class="row"&gt;
+	&lt;!--YOUR NEW ITEM--&gt;
+	&lt;div class="col-sm-4"&gt;
+		&lt;div class="item"&gt;
+			&lt;i class="fa fa-user"&gt;&lt;/i&gt; &lt;!-- icon --&gt;
+			&lt;h2&gt;title&lt;/h2&gt;
+			&lt;span&gt;&lt;/span&gt;
+			&lt;p&gt;Your description.&lt;/p&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;!--YOUR NEW ITEM--&gt;
+&lt;/div&gt;</pre>
+				<p>If you follow example, in one row you can add 3 items.</p>
+
+				<h2 id="section-html-parallax">Parallax</h2> <!-- /#section-html-parallax -->
+				<p>This is very simple section. If you want change background image, you should replate it in <b>img</b> directory. Image called <b>parallax</b>. </p>
+				<img class="template-part-image" src="img/parallax.png" alt="" />
+				<p>Structure of parallax section:</p>
+				<pre class="prettyprint">&lt;section id="parallax"&gt;
+	&lt;div class="indents"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col-md-12"&gt;
+				&lt;h2&gt;we &lt;i class="fa fa-heart-o"&gt;&lt;/i&gt; parallax backgrounds.&lt;/h2&gt;
+				&lt;p&gt;Your text.&lt;/p&gt;
+				&lt;a class="button" href="#"&gt;&lt;i class="fa fa-eye"&gt;&lt;/i&gt;&lt;span&gt;read more&lt;/span&gt;&lt;/a&gt;
+			&lt;/div&gt;
+		&lt;/div&gt; &lt;!-- row --&gt;
+	&lt;/div&gt; &lt;!-- indents --&gt;
+&lt;/section&gt;</pre>
+
+				<h2 id="section-html-team">Team</h2> <!-- /#section-html-team -->
+				<p>Team section has 2 main parts: members and counters.</p>
+				<img class="template-part-image" src="img/team.png" alt="" />
+				<h3>Members</h3>
+				<p>This part has 2 rows. Each row has 3 big columns with element. Each big columns takes 4 bootstrap columns (3 is multiplied by 4 is equal to 12). One row takes 12 columns. If you want add new item to this part, you should add new row, and then add one big column that takes 4 bootstrap columns. Example:</p>
+				<pre class="prettyprint">&lt;div class="row"&gt;
+	&lt;!--YOUR NEW MEMBER--&gt;
+	&lt;div class="col-sm-4"&gt;
+		&lt;div class="member"&gt;
+			&lt;div&gt;
+				&lt;div class="image"&gt;
+					&lt;img src="img/member-1.jpg" alt="Member"&gt;
+					&lt;div class="overlay"&gt;
+						&lt;ul&gt;
+							&lt;li&gt;&lt;a href="#"&gt;&lt;i class="fa fa-facebook"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href="#"&gt;&lt;i class="fa fa-twitter"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href="#"&gt;&lt;i class="fa fa-dribbble"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+						&lt;/ul&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;h3&gt;russel j. span&lt;/h3&gt;
+		&lt;p&gt;Founder&lt;/p&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;!--YOUR NEW MEMBER--&gt;
+&lt;/div&gt;</pre>
+				<p>If you follow example, in one row you can add 3 members.</p>
+
+				<h3>Counters</h3>
+				<p>This template has 4 counters placed in one row. Each counter takes 3 bootstrap columns. If you want add new counter, you should add new row, and then add new counter element, which takes 3 columns.</p>
+				<pre class="prettyprint">
+&lt;div class="row"&gt;
+	&lt;!--YOUR NEW COUNTER--&gt;
+	&lt;div class="col-sm-3"&gt;
+		&lt;ul class="item"&gt;
+			&lt;li&gt;&lt;i class="fa fa-users"&gt;&lt;/i&gt;&lt;/li&gt;
+			&lt;li&gt;
+				&lt;p class="counter"&gt;1642&lt;/p&gt;
+				&lt;h3&gt;clients&lt;/h3&gt;
+			&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+	&lt;!--YOUR NEW COUNTER--&gt;
+&lt;/div&gt;</pre> <!-- /.prettycode -->
+
+				<h2 id="section-html-prices">Prices</h2> <!-- /#section-html-prices -->
+				<p>This template has 3 prices element. Each element takes 4 bootstrap columns.</p>
+				<img class="template-part-image" src="img/prices.png" alt="" />
+				<p>If you want add new element, you should add new row, and then add element which takes 4 columns. Example:</p>
+				<pre class="prettyprint">
+&lt;div class="row"&gt;
+	&lt;!--YOUR NEW ELEMENT--&gt;
+	&lt;div class="col-sm-4"&gt;
+		&lt;div class="item"&gt;
+			&lt;h4&gt;basic&lt;/h4&gt;
+			&lt;h5&gt;$29.99&lt;/h5&gt;
+			&lt;ul&gt;
+				&lt;li&gt;2 Domains&lt;/li&gt;
+				&lt;li&gt;5GB Hosting&lt;/li&gt;
+				&lt;li&gt;Limited Accounts&lt;/li&gt;
+				&lt;li&gt;FTP&lt;/li&gt;
+				&lt;li&gt;Full Support&lt;/li&gt;
+			&lt;/ul&gt;
+			&lt;a class="button" href="#"&gt;&lt;i class="fa fa-credit-card"&gt;&lt;/i&gt;&lt;span&gt;buy now&lt;/span&gt;&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;!--YOUR NEW ELEMENT--&gt;
+&lt;/div&gt;</pre> <!-- /.prettyprint -->
+
+				<h2 id="section-html-blog">Blog</h2> <!-- /#section-html-blog -->
+				<p>Template has blog section on main page and one separate page of blog posts.</p>
+				<img class="template-part-image" src="img/blog.png" alt="" />
+				<h3>Blog Section</h3>
+				<p>This section has 2 rows with articles. Each article takes 4 bootstrap columns. If you want add new article, you should add new row, and the new article which takes 4 columns. Example:</p>
+				<pre class="prettyprint">
+&lt;div class="row"&gt;
+	&lt;!--YOU NEW ARTICLE--&gt;
+	&lt;div class="col-sm-4"&gt;
+		&lt;article&gt;
+			&lt;a href="#"&gt;Title&lt;/a&gt;
+			&lt;p class="time"&gt;24 June, 2014&lt;/p&gt;
+			&lt;p&gt;Your text.&lt;/p&gt;
+			&lt;a class="button" href="#"&gt;read more&lt;/a&gt;
+		&lt;/article&gt;
+	&lt;/div&gt;
+	&lt;!--YOUR NEW ARTICLE--&gt;
+&lt;/div&gt;</pre> <!-- /.prettyprint -->
+				<h3>Blog Page</h3>
+				<p>This page called <b>blog.html</b> and located in root directory with main page <b>index.html</b>. This page has header, like main page, and footer. Main part of this page it's list of posts. Each post take one row and 6 columns with offset in 3 columns. If you want add new article, you should add new row, and then new article. Exmaple:</p>
+				<pre class="prettyprint">
+&lt;div class="indents"&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col-sm-6 col-sm-offset-3"&gt;
+			&lt;article&gt;
+				&lt;a href="#"&gt;Title&lt;/a&gt;
+				&lt;p class="time"&gt;24 June, 2014&lt;/p&gt;
+				&lt;p&gt;Your text.&lt;/p&gt;
+				&lt;a class="button" href="#"&gt;read more&lt;/a&gt;
+			&lt;/article&gt;
+		&lt;/div&gt;
+	&lt;/div&gt; &lt;!-- row --&gt;
+&lt;/div&gt; &lt;!-- indents --&gt;</pre> <!-- /.prettyprint -->
+				<p>As you can see, backgrounds of each article alternate: white, grey, white, grey etc. If you want to add grey article, you should wrap you new element in class called <b>grey</b>. Example:</p>
+				<pre class="prettyprint">
+&lt;!--GREY ARTICLE--&gt;
+&lt;div class="grey"&gt;
+	&lt;div class="indents"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col-sm-6 col-sm-offset-3"&gt;
+				&lt;article&gt;
+					&lt;a href="#"&gt;Title.&lt;/a&gt;
+					&lt;p class="time"&gt;20 June, 2014&lt;/p&gt;
+					&lt;p&gt;Your text.&lt;/p&gt;
+					&lt;a class="button" href="#"&gt;read more&lt;/a&gt;
+				&lt;/article&gt;
+			&lt;/div&gt;
+		&lt;/div&gt; &lt;!-- row --&gt;
+	&lt;/div&gt; &lt;!-- indents --&gt;
+&lt;/div&gt; &lt;!-- grey --&gt;
+&lt;!--GREY ARTICLE--&gt;</pre> <!-- /.prettyprint -->
+
+				<h2 id="section-html-contacts">Contacts</h2> <!-- /#section-html-contacts -->
+				<p>This section has 2 main parts: contact information and form.</p>
+				<img class="template-part-image" src="img/contacts.png" alt="" />
+				<h3>Contact information</h3>
+				<p>This section takes one row. It has 3 columns. Each column take 2 bootstrap columns. Structure:</p>
+				<pre class="prettyprint">
+&lt;div class="row"&gt;
+	&lt;!--ADDRESS--&gt;
+	&lt;div class="col-sm-2 col-sm-offset-3"&gt;
+		&lt;h3&gt;address&lt;/h3&gt;
+		&lt;p&gt;1496 Farland Street&lt;br/&gt;Chicago, IL 60606 &lt;/p&gt;
+	&lt;/div&gt;
+	&lt;!--ADDRESS--&gt;
+
+	&lt;!--E-MAIL--&gt;
+	&lt;div class="col-sm-2"&gt;
+		&lt;h3&gt;e-mail&lt;/h3&gt;
+		&lt;p&gt;&lt;a href="mailto:support@example.com"&gt;support@example.com&lt;/a&gt;&lt;/p&gt;
+		&lt;p&gt;&lt;a href="mailto:maredwinz@gmail.com"&gt;maredwinz@gmail.com&lt;/a&gt;&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;!--E-MAIL--&gt;
+
+	&lt;!--PHONE--&gt;
+	&lt;div class="col-sm-2"&gt;
+		&lt;h3&gt;phone&lt;/h3&gt;
+		&lt;p&gt;773-920-3653&lt;br/&gt;985-796-6997&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;!--PHONE--&gt;
+&lt;/div&gt; &lt;!-- row --&gt;</pre> <!-- /.prettyprint -->
+
+				<h3>Form</h3>
+				<p>his section has 4 forms: name, e-mail, subject and message. <b>Name</b> and <b>e-mail</b> forms takes one row, and divide it in half.</p>
+				<pre class="prettyprint">
+&lt;div class="row"&gt;
+	&lt;div class="col-md-6"&gt;
+		&lt;p&gt;&lt;input type="text" name="input-name" placeholder="Name"&gt;&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class="col-md-6"&gt;
+		&lt;p&gt;&lt;input type="text" name="input-email" placeholder="Email"&gt;&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/div&gt; &lt;!-- row --&gt;</pre>
+					<p><b>Subject</b> and <b>message</b> forms takes full row.</p><pre class="prettyprint">&lt;p&gt;&lt;input type="text" name="input-subject" placeholder="Subject"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;textarea name="input-message" placeholder="Message"&gt;&lt;/textarea&gt;&lt;/p&gt;</pre> <!-- /.prettyprint -->
+				<h3>Setup contact form</h3>
+				<p>As you can see, main folder has file called <b>contact_me.php</b>. It's PHP script which is responsible for sending message to mailbox. Once script get all necessary data (name, email, subject and message) occurs validation.</p>
+				<pre class="prettyprint">
+if (strlen($name) &lt; 2) {
+    $output[] = array(
+        'status' =&gt; 0,
+        'message' =&gt; "Name is too short"
+    );
+    $process = false;
+}
+
+if (strlen($subject) &lt; 2) {
+    $output[] = array(
+        'status' =&gt; 0,
+        'message' =&gt; "Subject is too short."
+    );
+    $process = false;
+}
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $output[] = array(
+        'status' =&gt; 0,
+        'message' =&gt; "Enter corrent e-mail."
+    );
+    $process = false;
+}
+
+if (strlen($message) &lt; 2) {
+    $output[] = array(
+        'status' =&gt; 0,
+        'message' =&gt; "Message is too short."
+    );
+    $process = false;
+}</pre> <!-- /.prettyprint -->
+				<p>Name, subject and message length must be greater than 2 symbols. E-mail is checked by standard PHP methods (<code>filter_val</code>). Then, if validation was successful message formed and sent to recipient.</p>
+				<pre class="prettyprint">
+if ($process) {
+    $full_message .= 'Name: '.$name."\n";
+    $full_message .= 'E-mail: '.$email."\n";
+    $full_message .= "\n".$message;
+
+    $headers .= 'From: '.$email."\r\n";
+    $headers .= 'Reply-To: '.$email."\r\n";
+    $headers .= 'X-Mailer: PHP/'.phpversion();
+
+    if (mail($to, $subject, $full_message, $headers)) {
+        $output[] = array(
+            'staus' =&gt; 1,
+            'message' =&gt; 'Hello '.$name.'. Thank you for your message.'
+        );
+    } else {
+        $output[] = array(
+            'staus' =&gt; 0,
+            'message' =&gt; 'Could not send mail! Please check your PHP mail configuration.'
+        );
+    }
+}</pre> <!-- /.prettyprint -->
+				<p>All necessary data PHP script get from JavaScript via AJAX. In order to feedback form work properly you must put template to server with PHP 4 or greater.</p>
+
+				<h2 id="section-html-footer">Footer</h2> <!-- /#section-html-footer -->
+				<p>Footer it's very simple section of template.</p>
+				<img class="template-part-image" src="img/footer.png" alt="" />
+				<p>Structure of footer:</p>
+				<pre class="prettyprint">
+&lt;!--FOOTER--&gt;
+&lt;footer&gt;
+	&lt;div class="indents"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col-sm-2"&gt;
+				&lt;a class="logo" href="index.html"&gt;&lt;img src="img/logo-light.png" alt="Logo"&gt;&lt;/a&gt;
+			&lt;/div&gt;
+			&lt;div class="col-sm-8"&gt;
+				&lt;ul&gt;
+					&lt;li&gt;&lt;a class="fb" href="#"&gt;&lt;i class="fa fa-facebook"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a class="tw" href="#"&gt;&lt;i class="fa fa-twitter"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a class="dr" href="#"&gt;&lt;i class="fa fa-dribbble"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a class="li" href="#"&gt;&lt;i class="fa fa-linkedin"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a class="gp" href="#"&gt;&lt;i class="fa fa-google-plus"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a class="ig" href="#"&gt;&lt;i class="fa fa-instagram"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a class="tm" href="#"&gt;&lt;i class="fa fa-tumblr"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;/div&gt;
+			&lt;div class="col-sm-2"&gt;
+				&lt;p&gt;Novanoid &copy; 2014.&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/div&gt; &lt;!-- row --&gt;
+	&lt;/div&gt; &lt;!-- indents --&gt;
+&lt;/footer&gt;
+&lt;!--FOOTER--&gt;</pre> <!-- /.prettyprint -->
+				<!-- END HTML -->
+
+
+				<!-- BEGIN CSS -->
+				<h1 id="section-css" class="section-begin">CSS</h1> <!-- /#section-css.section-begin -->
+				<p>This template has 4 CSS files:</p>
+				<ul class="files-structure">
+					<li class="file">animate.css</li> <!-- /.file -->
+					<li class="file">bootstrap.min.css</li> <!-- /.file -->
+					<li class="file">font-awesome.min.css</li> <!-- /.file -->
+					<li class="file">magnific-popup.css</li> <!-- /.file -->
+					<li class="file">owl.carousel.css</li> <!-- /.file -->
+					<li class="file">owl.theme.css</li> <!-- /.file -->
+					<li class="file">responsive.css</li> <!-- /.file -->
+					<li class="file">style.css</li> <!-- /.file -->
+					<li class="file">style-2.css</li> <!-- /.file -->
+					<li class="file">style-3.css</li> <!-- /.file -->
+					<li class="file">style-4.css</li> <!-- /.file -->
+					<li class="file">style-5.css</li> <!-- /.file -->
+					<li class="file">style-6.css</li> <!-- /.file -->
+					<li class="file">style-7.css</li> <!-- /.file -->
+					<li class="file">style-8.css</li> <!-- /.file -->
+					<li class="file">style-switcher.css</li> <!-- /.file -->
+				</ul> <!-- /.files-structure -->
+
+				<h2>styles.css</h2>
+				<p>This theme has 2 CSS files. The first it's main file with all styles of the theme. Second file it's file for responsive layout. Main CSS file has different sections:</p>
+				<ol>
+					<li>Global</li>
+					<li>Button</li>
+					<li>Overlay</li>
+					<li>Header</li>
+					<li>Navbar</li>
+					<li>Features</li>
+					<li>Works</li>
+					<li>Services</li>
+					<li>Parallax</li>
+					<li>Team</li>
+					<li>Prices</li>
+					<li>Blog</li>
+					<li>Contacts</li>
+					<li>Footer</li>
+				</ol>
+				<p>If you would like to edit a specific section of the site, simply find the appropriate label in the CSS file, and then scroll down until you find the appropriate style that needs to be edited.</p>
+				<p>Also as you can see in each HTML page commented lines with linked other CSS files. This files has same structure but main color scheme of styles is different. Template provided in different colors.</p>
+				<h3>Color Schemes</h3>
+				<ul class="color-schemes">
+					<li><div class="color color-1"></div><span>#48CFAE</span></li>
+					<li><div class="color color-2"></div><span>#5D9CEC</span></li>
+					<li><div class="color color-3"></div><span>#A0D468</span></li>
+					<li><div class="color color-4"></div><span>#50C1E9</span></li>
+					<li><div class="color color-5"></div><span>#FFCE55</span></li>
+					<li><div class="color color-6"></div><span>#FB6E52</span></li>
+					<li><div class="color color-7"></div><span>#AC92ED</span></li>
+					<li><div class="color color-8"></div><span>#EC87C1</span></li>
+				</ul>
+				<p>If you want to change color scheme, you must link the CSS file with the appropriate name on every HTML page.</p>
+
+				<p>CSS files with responsive layout has different media quires. All media queries arranged in order of decay. If you want to add your media query, add it so as not to upset the order. To add you media query use the syntax:</p>
+				<pre class="prettyprint">
+@media (max-width: Npx) {
+    /* Your Code Here */
+}</pre> <!-- /.prettyprint -->
+				<p>Where <b>N</b> means number of pixels of screen.</p>
+				<!-- END CSS -->
+
+
+				<!-- BEGIN JAVASCRIPT -->
+				<h1 id="section-javascript" class="section-begin">JavaScript</h1> <!-- /#section-javascript.section-begin -->
+				<p>Template imports 11 javascript files:</p>
+				<ul class="files-structure">
+					<li class="file">bootstrap.min.js</li> <!-- /.file -->
+					<li class="file">imagesloaded.pkgd.min.js</li> <!-- /.file -->
+					<li class="file">isotope.pkgd.min.js</li> <!-- /.file -->
+					<li class="file">jquery.counterup.min.js</li> <!-- /.file -->
+					<li class="file">jquery.magnific-popup.min.js</li> <!-- /.file -->
+					<li class="file">jquery.sticky.js</li> <!-- /.file -->
+					<li class="file">jquery-2.1.1.min.js</li> <!-- /.file -->
+					<li class="file">owl.carousel.min.js</li> <!-- /.file -->
+					<li class="file">waypoints.min.js</li> <!-- /.file -->
+					<li class="file">wow.min.js</li> <!-- /.file -->
+					<li class="file">scripts.js</li> <!-- /.file -->
+				</ul> <!-- /.files-structure -->
+
+				<h2>bootstrap.min.js</h2>
+				<p>Bootstrap library of scripts. See more at <a href="http://getbootstrap.com/" target="_blank">getbootstrap.com</a>.</p>
+
+				<h2>imagesloaded.pkgd.min.js</h2>
+				<p>Plugin which detect when images have been loaded on page. Used with Isotope on Gallery page. See more at <a href="http://imagesloaded.desandro.com/" target="_blank">imagesloaded.desandro.com</a>.</p>
+
+				<h2>isotope.pkgd.min.js</h2>
+				<p>Filter and sort layout. Used in Works section. See more at <a href="http://isotope.metafizzy.co/" target="_blank">isotope.metafizzy.co</a>.</p>
+				
+				<h2>jquery.counterup.min.js</h2>
+				<p>It is a jQuery plugin that animates a number from zero (counting up towards it). See more at See more at <a href="https://github.com/bfintal/Counter-Up" target="_blank">github.com/bfintal/Counter-Up</a>.</p>
+
+				<h2>jquery.magnific-popup.min.js</h2>
+				<p>Responsive lightbox plugin called Magnific Popup, used on Blog Single page and Gallery page. See more at <a href="http://dimsemenov.com/plugins/magnific-popup/" target="_blank">dimsemenov.com/plugins/magnific-popup</a>.</p>
+
+				<h2>jquery.sticky.js</h2>
+				<p>Sticky is a jQuery plugin that gives you the ability to make any element on your page always stay visible. Used for navbar. See more at <a href="http://stickyjs.com/" target="_blank">stickyjs.com/</a>.</p>
+
+				<h2>jquery-2.1.1.min.js</h2>
+				<p>Standart jQuery library. See more at <a href="http://jquery.com/" target="_blank">jquery.com</a>.</p>
+				
+				<h2>owl.carousel.min.js</h2>
+				<p>Touch enabled jQuery plugin that lets you create beautiful responsive carousel slider. Used in header section. See more at <a href="http://owlgraphic.com/owlcarousel/" target="_blank">owlgraphic.com/owlcarousel</a>.</p>
+				
+				<h2>waypoints.min.js</h2>
+				<p>Waypoints is a jQuery plugin that makes it easy to execute a function whenever you scroll to an element. See more at <a href="http://imakewebthings.com/jquery-waypoints/" target="_blank">imakewebthings.com/jquery-waypoints</a>.</p>
+				
+				<h2>wow.min.js</h2>
+				<p>Reveal animations when you scroll. See more at See more at <a href="http://mynameismatthieu.com/WOW" target="_blank">mynameismatthieu.com/WOW/</a>.</p>
+				
+				<h2>scripts.js</h2>
+				<p>This is a user Javascript file, which contain different calling other plugins and some my own scripts. File has 14 sections:</p>
+				<ol>
+					<li>Carousel</li>
+					<li>Random Header</li>
+					<li>Header Content Opacity</li>
+					<li>Navbar</li>
+					<li>Sticky Navbar</li>
+					<li>Magnific Popup</li>
+					<li>Counters</li>
+					<li>Navbar Width Fix</li>
+					<li>Contact Form</li>
+					<li>Scroll To Top</li>
+					<li>Smooth Scroll</li>
+					<li>Page Animations</li>
+					<li>Preloader</li>
+					<li>Isotope</li>
+				</ol>
+				<h3>Carousel</h3>
+				<p>Call method for Owl Carousel. See more at <a href="http://owlgraphic.com/owlcarousel/" target="_blank">owlgraphic.com/owlcarousel</a>.</p>
+				<pre class="prettyprint">$(function(){
+    $(".caption").owlCarousel({
+        navigation: false,
+        slideSpeed: 300,
+        paginationSpeed: 400,
+        singleItem: true,
+        transitionStyle: "fade",
+        mouseDrag: false,
+        touchDrag: false,
+        autoPlay: true
+    });
+});</pre>
+				<h3>Random Header</h3>
+				<p>Script which is responsible for the header of page. It generates a random number from range 1-6 and then make string like <b>header-1</b> and replace it in HTML code.</p>
+				<pre class="prettyprint">$(function(){
+    var random = Math.ceil(Math.random() * 6),
+        newHeader = "header-" + random;
+    $('.head').addClass(newHeader);
+});</pre>
+				<p>Script generates number from range 1 till 6 because template has 6 different headers by default. If you want add new header, you should change range of generating numbers, if you want remove header, you should change range too.</p>
+				<h3>Header Content Opacity</h3>
+				<p>When you scroll down you can see that content of header gradually gets opacity. Changing opacity occurs to a point which is equal to the 450 pixels of top of the screen.</p>
+				<pre class="prettyprint">$(function(){
+    var element = $('.caption .item'),
+        offsetEnd = 450,
+        opacity,
+        offset = $(document).scrollTop();
+    offset > offsetEnd ? opacity = 0 : opacity = 1 - offset/offsetEnd;
+    element.css("opacity", opacity);
+    $(window).scroll(function(){
+        offset = $(document).scrollTop();
+        offset <= offsetEnd ? opacity = 1 - offset/offsetEnd : opacity = 0;
+        element.css('opacity', opacity);
+    });
+});</pre>
+				<h3>Navbar</h3>
+				<p>When you scroll down you can see that transparent header changing to white header. Script detects when you scrolled down for number of pixels that equals height of header (600 pixels), and then replace navbar.</p>
+				<pre class="prettyprint">$(function(){
+    var head = $('.head').height(),
+        navbar = $('.navbar');
+    $(this).scrollTop() >= head ? navbar.removeClass('normal').addClass('offset') : navbar.removeClass('offset').addClass('normal');
+    $(window).scroll(function () {
+        $(this).scrollTop() >= head ? navbar.removeClass('normal').addClass('offset') : navbar.removeClass('offset').addClass('normal');
+    });
+});</pre>
+				<h3>Sticky Navbar</h3>
+				<p>Call method for Sticky plugin. See more at <a href="http://stickyjs.com/" target="_blank">stickyjs.com/</a>.</p>
+				<pre class="prettyprint">$(function(){
+    $('.navbar').sticky({
+        topSpacing: 0
+    });
+});</pre>
+				<h3>Magnific Popup</h3>
+				<p>Call method for Magnific Popup plugin. See more at <a href="http://dimsemenov.com/plugins/magnific-popup/" target="_blank">dimsemenov.com/plugins/magnific-popup</a>.</p>
+				<pre class="prettyprint">$(function(){
+    $('#works .grid').magnificPopup({
+        delegate: 'a',
+        type: 'image'
+    });
+});</pre>
+				<h3>Counters</h3>
+				<p>Call method for Counter Up plugin. See more at See more at <a href="https://github.com/bfintal/Counter-Up" target="_blank">github.com/bfintal/Counter-Up</a>.</p>
+				<pre class="prettyprint">$(function(){
+    $('.counter').counterUp({
+        delay: 10,
+        time: 1000
+    });
+});</pre>
+				<h3>Navbar Width Fix</h3>
+				<p>Script which is responsible for the navbar width. It gets width of the header and set this value to width of navbar when you load or resize page.</p>
+				<pre class="prettyprint">$(function(){
+    var width = $('.head').width();
+    $('.navbar').css('max-width', width);
+    $(window).resize(function() {
+        var width = $('.head').width();
+        $('.navbar').css('max-width', width);
+    });
+});</pre>
+				<h3>Contact Form</h3>
+				<p>Script which is responsible for the contact form.</p>
+				<pre class="prettyprint">$("form button").click(function() {
+    var user_name = $('input[name=input-name]').val(),
+        user_email = $('input[name=input-email]').val(),
+        user_subject = $('input[name=input-subject]').val(),
+        user_message = $('textarea[name=input-message]').val(),
+        process = true;
+    if (user_name == "") {
+        $('input[name=input-name]').css('border-color','#ed5564');
+        process = false;
+    }
+
+    if (user_email == "") {
+        $('input[name=input-email]').css('border-color','#ed5564');
+        process = false;
+    }
+
+    if (user_subject == "") {
+        $('input[name=input-subject]').css('border-color','#ed5564');
+        process = false;
+    }
+
+    if (user_message == "") {
+        $('textarea[name=input-message]').css('border-color','#ed5564');
+        process = false;
+    }
+
+    if (process) {
+        post_data = {'userName':user_name, 'userEmail':user_email, 'userSubject':user_subject, 'userMessage':user_message};
+        $.post('contact_me.php', post_data, function(response){     /* change your email and subject in contact_me.php */
+            if(response.type == 'error') {
+                output = '&lt;div class="error"&gt;'+response.text+'&lt;/div&gt;';
+            }
+            else {
+                output = '&lt;div class="success"&gt;'+response.text+'&lt;/div&gt;';
+                $('form input').val('');
+                $('form textarea').val('');
+            }
+            $("#result").hide().html(output).slideDown();
+        }, 'json');
+    }
+});
+$("form input, form textarea").keyup(function() {
+    $("form input, form textarea").css('border-color','');
+    $("#result").slideUp();
+});</pre>
+				<h3>Scroll To Top</h3>
+				<p>It's a small script which is responsible for the button that appears in the lower right corner of the screen when you scroll down the page.</p>
+				<pre class="prettyprint">$(function(){
+    if ($(window).width() > 850) {
+        $(window).scroll(function(){
+            $(this).scrollTop() > 500 ? $('.scrolltop').fadeIn() : $('.scrolltop').fadeOut();
+        });
+        $('.scrolltop').click(function(){
+            $('html, body').animate({scrollTop: 0}, 500);
+            return false;
+        });
+    }
+});</pre>
+				<h3>Smooth Scroll</h3>
+				<p>Script performs a smooth page scroll to an anchor on the same page.</p>
+				<pre class="prettyprint">$(function(){
+    var height = $('nav').height();
+    $('.scroll').click(function(){
+        var href = $(this).attr("href");
+        var hash = href.substr(href.indexOf("#"));
+        if (hash == '#home') {
+            $('html, body').animate({scrollTop: 0}, 500);
+        }
+        else {
+            $('html,body').animate({scrollTop:$(this.hash).offset().top - height}, 500);
+        }
+    });
+});</pre>
+				<h3>Page Animations</h3>
+				<p>Call method for Wow plugin. See more at <a href="http://mynameismatthieu.com/WOW" target="_blank">mynameismatthieu.com/WOW/</a>.</p>
+				<pre class="prettyprint">$(function(){
+    new WOW().init();
+});</pre>
+				<h3>Preloader</h3>
+				<p>Preloader it's script which hide content of page while page loading. This time you see a small animation of clock in the middle of the screen. You can change animation in <b>img</b> directory. Animation called <b>loader.gif</b>.</p>
+				<pre class="prettyprint">$(function(){
+    $('#status').fadeOut();
+    $('#preloader').delay(350).fadeOut('slow');
+    $('body').delay(350).css({'overflow':'visible'});
+});</pre>
+				<h3>Isotope</h3>
+				<p>Call method for Isotope plugin. See more at <a href="http://isotope.metafizzy.co/" target="_blank">isotope.metafizzy.co</a>.</p>
+				<pre class="prettyprint">$(function(){
+    var $container = $('#works .grid');
+    $container.imagesLoaded(function() {
+        $container.isotope({
+            itemSelector: '.item',
+            layoutMode: 'fitRows'
+        });
+    });
+    $('#works .filters li').click(function() {
+        $('#works .filters li').removeClass('active');
+        $(this).addClass('active');
+        var filter = $(this).attr('data-filter');
+        $('#works .item').each(function(){
+            $(this).find('a').css({
+                'cursor': 'pointer'
+            });
+            $(this).css({
+                '-webkit-transform': 'scale(1)',
+                '-moz-transform': 'scale(1)',
+                '-o-transform': 'scale(1)',
+                'transform': 'scale(1)',
+                'opacity': 1
+            });
+            if (filter != '*' && !$(this).hasClass(filter)) {
+                $(this).find('a').css({
+                    'cursor': 'not-allowed'
+                });
+                $(this).css({
+                    '-webkit-transform': 'scale(0.8)',
+                    '-moz-transform': 'scale(0.8)',
+                    '-o-transform': 'scale(0.8)',
+                    'transform': 'scale(0.8)',
+                    'opacity': '0.3'
+                });
+            }
+        });
+    });
+});</pre>
+				<!-- END JAVASCRIPT -->
+
+
+				<!-- BEGIN CREDITS -->
+				<h1 id="section-credits" class="section-begin">Credits</h1> <!-- /#section-cretids.section-begin -->
+				<p>I've used the following images, icons and fonts.</p>
+				<ul>
+					<li>Images for header, works etc. from <a href="http://flickr.com" target="_blank">flickr</a>.</li>
+					<li><a href="https://www.google.com/fonts/specimen/Yanone+Kaffeesatz" target="_blank">Yanone Kaffeesatz</a> font.</li>
+					<li><a href="http://www.google.com/fonts/specimen/Roboto" target="_blank">Roboto</a> font.</li>
+					<li><a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome</a> icon font</li>
+				</ul>
+				<!-- END CREDITS -->
+
+				<hr />
+
+				<p>Thank you for purchasing my theme. If you have any questions that are beyond the scope of this help file, please feel free to email via my user page contact form <a target="_blank" href="http://themeforest.net/user/rmmr?ref=rmmr">here.</a> Thanks so much!</p>
+			</div> <!-- /#content -->
+		</div> <!-- /.container -->
+	</div> <!-- /#main -->
+
+	<script src="js/jquery-2.2.0.min.js"></script>
+	<script src="js/prettify.js"></script>
+	<script src="js/user.js"></script>
+</body>
+</html>
