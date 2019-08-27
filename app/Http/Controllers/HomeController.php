@@ -3,12 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-use app\User;
-use Illuminate\Support\Facades\Hash;
-=======
 use app\Models\User;
->>>>>>> 928174526e942000ee0cd4e61a819231b56d1eab
 
 class HomeController extends Controller
 {
@@ -29,15 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
         $users = User::get();
         return view(
             'home',
             ['users' => $users]
         );
-=======
-        return view('home');
->>>>>>> 928174526e942000ee0cd4e61a819231b56d1eab
     }
 //    public function create()
 //    {
