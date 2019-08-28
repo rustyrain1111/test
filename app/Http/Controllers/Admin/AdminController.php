@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -73,12 +73,6 @@ class AdminController extends Controller
         return redirect('admin/admin');
     }
 
-    public function destroy($id)
-    {
-       User::destroy($id);
-        return redirect('admin/admin');
-    }
-
     /**
      * @param Request $request
      * @param $id
@@ -95,4 +89,17 @@ class AdminController extends Controller
         $user->save();
         return redirect('admin/admin');
     }
+
+    public function destroy($id) {
+        User::where('id', $id)->delete();
+
+        return redirect()->back();
+    }
+
+    public function restore($id) {
+        User::where('id', $id)->restore();
+
+        return redirect()->back();
+    }
+
 }
