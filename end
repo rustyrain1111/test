@@ -1,0 +1,707 @@
+[33mcommit a01ec9a242478e6ba9af707e606b8f844443c0e0[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: vagrant <vagrant@homestead>
+Date:   Wed Aug 28 11:30:38 2019 +0000
+
+    restore my dashboard
+
+[1mdiff --git a/.env.example b/.env.example[m
+[1mindex 0097ee3..d058c34 100644[m
+[1m--- a/.env.example[m
+[1m+++ b/.env.example[m
+[36m@@ -1,15 +1,15 @@[m
+ APP_NAME=Laravel[m
+ APP_ENV=local[m
+[31m-APP_KEY=base64:eoqKgOHbwrwX4IEVbfJNZzPvznuv2UDtyvcnFq1VTsE=[m
+[32m+[m[32mAPP_KEY=[m
+ APP_DEBUG=true[m
+ APP_URL=http://localhost[m
+ [m
+ LOG_CHANNEL=stack[m
+ [m
+[31m-DB_CONNECTION=pgsql[m
+[32m+[m[32mDB_CONNECTION=mysql[m
+ DB_HOST=127.0.0.1[m
+[31m-DB_PORT=5432[m
+[31m-DB_DATABASE=admin_panel[m
+[32m+[m[32mDB_PORT=3306[m
+[32m+[m[32mDB_DATABASE=homestead[m
+ DB_USERNAME=homestead[m
+ DB_PASSWORD=secret[m
+ [m
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mindex 5f87cc7..59e8f45 100644[m
+[1m--- a/.gitignore[m
+[1m+++ b/.gitignore[m
+[36m@@ -9,4 +9,3 @@[m [mHomestead.json[m
+ Homestead.yaml[m
+ npm-debug.log[m
+ yarn-error.log[m
+[31m-Session.vim[m
+[1mdiff --git a/app/Http/Controllers/Admin/BaseController.php b/app/Http/Controllers/Admin/BaseController.php[m
+[1mdeleted file mode 100644[m
+[1mindex b964d8d..0000000[m
+[1m--- a/app/Http/Controllers/Admin/BaseController.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,40 +0,0 @@[m
+[31m-<?php[m
+[31m-[m
+[31m-namespace App\Http\Controllers\Admin;[m
+[31m-[m
+[31m-use Illuminate\Http\Request;[m
+[31m-use App\Http\Controllers\Controller;[m
+[31m-[m
+[31m-use App\Models\User;[m
+[31m-[m
+[31m-class BaseController extends Controller[m
+[31m-{[m
+[31m-	public function index() {[m
+[31m-		return view('admin/test');[m
+[31m-	}[m
+[31m-[m
+[31m-	public function test() {[m
+[31m-		return view('admin/test');[m
+[31m-	}[m
+[31m-[m
+[31m-	public function getUsers() {[m
+[31m-		return view('admin/users', [[m
+[31m-			'users' => User::withTrashed()[m
+[31m-				->orderBy('id')[m
+[31m-				->paginate(env('USER_PAGINATION')),[m
+[31m-			'count' => User::count(),[m
+[31m-		]);[m
+[31m-	}[m
+[31m-[m
+[31m-	public function deleteUser($id) {[m
+[31m-		User::where('id', $id)->delete();[m
+[31m-[m
+[31m-		return redirect()->back();[m
+[31m-	}[m
+[31m-[m
+[31m-	public function restoreUser($id) {[m
+[31m-		User::where('id', $id)->restore();[m
+[31m-[m
+[31m-		return redirect()->back();[m
+[31m-	}[m
+[31m-}[m
+[1mdiff --git a/app/Http/Controllers/Auth/RegisterController.php b/app/Http/Controllers/Auth/RegisterController.php[m
+[1mindex 4ed65cf..85b9057 100644[m
+[1m--- a/app/Http/Controllers/Auth/RegisterController.php[m
+[1m+++ b/app/Http/Controllers/Auth/RegisterController.php[m
+[36m@@ -2,7 +2,7 @@[m
+ [m
+ namespace App\Http\Controllers\Auth;[m
+ [m
+[31m-use App\Models\User;[m
+[32m+[m[32muse App\User;[m
+ use App\Http\Controllers\Controller;[m
+ use Illuminate\Support\Facades\Hash;[m
+ use Illuminate\Support\Facades\Validator;[m
+[1mdiff --git a/app/Http/Controllers/HomeController.php b/app/Http/Controllers/HomeController.php[m
+[1mindex 3616b61..6db5895 100644[m
+[1m--- a/app/Http/Controllers/HomeController.php[m
+[1m+++ b/app/Http/Controllers/HomeController.php[m
+[36m@@ -3,7 +3,8 @@[m
+ namespace App\Http\Controllers;[m
+ [m
+ use Illuminate\Http\Request;[m
+[31m-use app\Models\User;[m
+[32m+[m[32muse app\User;[m
+[32m+[m[32muse Illuminate\Support\Facades\Hash;[m
+ [m
+ class HomeController extends Controller[m
+ {[m
+[1mdiff --git a/app/Http/Kernel.php b/app/Http/Kernel.php[m
+[1mindex 77333e1..a1cec4c 100644[m
+[1m--- a/app/Http/Kernel.php[m
+[1m+++ b/app/Http/Kernel.php[m
+[36m@@ -37,11 +37,6 @@[m [mclass Kernel extends HttpKernel[m
+             \Illuminate\Routing\Middleware\SubstituteBindings::class,[m
+         ],[m
+ [m
+[31m-		'admin' => [[m
+[31m-			\App\Http\Middleware\IsAdminMiddleware::class,[m
+[31m-        	\App\Http\Middleware\Authenticate::class,[m
+[31m-		],[m
+[31m-[m
+         'api' => [[m
+             'throttle:60,1',[m
+             'bindings',[m
+[1mdiff --git a/app/Http/Middleware/IsAdminMiddleware.php b/app/Http/Middleware/IsAdminMiddleware.php[m
+[1mdeleted file mode 100644[m
+[1mindex 6cd792f..0000000[m
+[1m--- a/app/Http/Middleware/IsAdminMiddleware.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,25 +0,0 @@[m
+[31m-<?php[m
+[31m-[m
+[31m-namespace App\Http\Middleware;[m
+[31m-[m
+[31m-use Closure;[m
+[31m-use Auth;[m
+[31m-[m
+[31m-class IsAdminMiddleware[m
+[31m-{[m
+[31m-    /**[m
+[31m-     * Handle an incoming request.[m
+[31m-     *[m
+[31m-     * @param  \Illuminate\Http\Request  $request[m
+[31m-     * @param  \Closure  $next[m
+[31m-     * @return mixed[m
+[31m-     */[m
+[31m-    public function handle($request, Closure $next)[m
+[31m-	{[m
+[31m-		if (Auth::user()->is_admin == 1) {[m
+[31m-			return $next($request);[m
+[31m-		}[m
+[31m-[m
+[31m-		return redirect('/');[m
+[31m-    }[m
+[31m-}[m
+[1mdiff --git a/app/Models/User.php b/app/Models/User.php[m
+[1mindex d28e273..0e106fe 100644[m
+[1m--- a/app/Models/User.php[m
+[1m+++ b/app/Models/User.php[m
+[36m@@ -1,17 +1,47 @@[m
+ <?php[m
+ [m
+[31m-namespace App\Models;[m
+[32m+[m[32mnamespace App;[m
+ [m
+ use Illuminate\Notifications\Notifiable;[m
+ use Illuminate\Contracts\Auth\MustVerifyEmail;[m
+ use Illuminate\Foundation\Auth\User as Authenticatable;[m
+ [m
+[31m-use Illuminate\Database\Eloquent\SoftDeletes;[m
+[31m-[m
+[32m+[m[32m/**[m
+[32m+[m[32m * App\User[m
+[32m+[m[32m *[m
+[32m+[m[32m * @property int $id[m
+[32m+[m[32m * @property string $name[m
+[32m+[m[32m * @property string $email[m
+[32m+[m[32m * @property string|null $token[m
+[32m+[m[32m * @property int $is_admin[m
+[32m+[m[32m * @property \Illuminate\Support\Carbon|null $email_verified_at[m
+[32m+[m[32m * @property string $password[m
+[32m+[m[32m * @property int|null $role_id[m
+[32m+[m[32m * @property string|null $remember_token[m
+[32m+[m[32m * @property \Illuminate\Support\Carbon|null $created_at[m
+[32m+[m[32m * @property \Illuminate\Support\Carbon|null $updated_at[m
+[32m+[m[32m * @property string|null $deleted_at[m
+[32m+[m[32m * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications[m
+[32m+[m[32m * @method static \Illuminate\Database\Eloquent\Builder|\App\User newModelQuery()[m
+[32m+[m[32m * @method static \Illuminate\Database\Eloquent\Builder|\App\User newQuery()[m
+[32m+[m[32m * @method static \Illuminate\Database\Eloquent\Builder|\App\User query()[m
+[32m+[m[32m * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCreatedAt($value)[m
+[32m+[m[32m * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereDeletedAt($value)[m
+[32m+[m[32m * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereEmail($value)[m
+[32m+[m[32m * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereEmailVerifiedAt($value)[m
+[32m+[m[32m * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereId($value)[m
+[32m+[m[32m * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereIsAdmin($value)[m
+[32m+[m[32m * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereName($value)[m
+[32m+[m[32m * @method static \Illuminate\Database\Eloquent\Builder|\App\User wherePassword($value)[m
+[32m+[m[32m * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereRememberToken($value)[m
+[32m+[m[32m * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereRoleId($value)[m
+[32m+[m[32m * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereToken($value)[m
+[32m+[m[32m * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUpdatedAt($value)[m
+[32m+[m[32m * @mixin \Eloquent[m
+[32m+[m[32m */[m
+ class User extends Authenticatable[m
+ {[m
+     use Notifiable;[m
+[31m-	use SoftDeletes;[m
+ [m
+     /**[m
+      * The attributes that are mass assignable.[m
+[36m@@ -19,7 +49,7 @@[m [mclass User extends Authenticatable[m
+      * @var array[m
+      */[m
+     protected $fillable = [[m
+[31m-        'name', 'email', 'password',[m
+[32m+[m[32m        'name', 'email', 'password', 'is_admin'[m
+     ];[m
+ [m
+     /**[m
+[36m@@ -31,6 +61,11 @@[m [mclass User extends Authenticatable[m
+         'password', 'remember_token',[m
+     ];[m
+ [m
+[32m+[m
+[32m+[m[32m    public function isAdmin()[m
+[32m+[m[32m    {[m
+[32m+[m[32m        return (bool)$this->is_admin;[m
+[32m+[m[32m    }[m
+     /**[m
+      * The attributes that should be cast to native types.[m
+      *[m
+[36m@@ -39,6 +74,4 @@[m [mclass User extends Authenticatable[m
+     protected $casts = [[m
+         'email_verified_at' => 'datetime',[m
+     ];[m
+[31m-[m
+[31m-	protected $dates = ['deleted_at'];[m
+ }[m
+[1mdiff --git a/app/Providers/RouteServiceProvider.php b/app/Providers/RouteServiceProvider.php[m
+[1mindex 0f3a933..a4139ed 100644[m
+[1m--- a/app/Providers/RouteServiceProvider.php[m
+[1m+++ b/app/Providers/RouteServiceProvider.php[m
+[36m@@ -40,6 +40,7 @@[m [mclass RouteServiceProvider extends ServiceProvider[m
+         $this->mapWebRoutes();[m
+ [m
+         $this->mapAdminRoutes();[m
+[32m+[m[32m        //[m
+     }[m
+ [m
+     /**[m
+[36m@@ -56,14 +57,6 @@[m [mclass RouteServiceProvider extends ServiceProvider[m
+              ->group(base_path('routes/web.php'));[m
+     }[m
+ [m
+[31m-    protected function mapAdminRoutes()[m
+[31m-    {[m
+[31m-        Route::middleware(['web', 'admin'])[m
+[31m-			 ->prefix('admin')[m
+[31m-             ->namespace($this->namespace)[m
+[31m-             ->group(base_path('routes/admin.php'));[m
+[31m-    }[m
+[31m-[m
+     /**[m
+      * Define the "api" routes for the application.[m
+      *[m
+[36m@@ -78,4 +71,11 @@[m [mclass RouteServiceProvider extends ServiceProvider[m
+              ->namespace($this->namespace)[m
+              ->group(base_path('routes/api.php'));[m
+     }[m
+[32m+[m
+[32m+[m[32m    protected function mapAdminRoutes()[m
+[32m+[m[32m    {[m
+[32m+[m[32m        Route::prefix('admin')->middleware(['web','auth','admin'])[m
+[32m+[m[32m            ->namespace('App\Http\Controllers\Admin')[m
+[32m+[m[32m            ->group(base_path('routes/admin.php'));[m
+[32m+[m[32m    }[m
+ }[m
+[1mdiff --git a/config/auth.php b/config/auth.php[m
+[1mindex 86a0ea1..897dc82 100644[m
+[1m--- a/config/auth.php[m
+[1m+++ b/config/auth.php[m
+[36m@@ -68,7 +68,7 @@[m [mreturn [[m
+     'providers' => [[m
+         'users' => [[m
+             'driver' => 'eloquent',[m
+[31m-            'model' => App\Models\User::class,[m
+[32m+[m[32m            'model' => App\User::class,[m
+         ],[m
+ [m
+         // 'users' => [[m
+[1mdiff --git a/config/database.php b/config/database.php[m
+[1mindex 95266ab..0cf5445 100644[m
+[1m--- a/config/database.php[m
+[1m+++ b/config/database.php[m
+[36m@@ -15,7 +15,7 @@[m [mreturn [[m
+     |[m
+     */[m
+ [m
+[31m-    'default' => env('DB_CONNECTION', 'pgsql'),[m
+[32m+[m[32m    'default' => env('DB_CONNECTION', 'mysql'),[m
+ [m
+     /*[m
+     |--------------------------------------------------------------------------[m
+[1mdiff --git a/database/migrations/2019_07_10_083636_add_admin_to_user_table.php b/database/migrations/2019_07_10_083636_add_admin_to_user_table.php[m
+[1mdeleted file mode 100644[m
+[1mindex 81b8d7e..0000000[m
+[1m--- a/database/migrations/2019_07_10_083636_add_admin_to_user_table.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,32 +0,0 @@[m
+[31m-<?php[m
+[31m-[m
+[31m-use Illuminate\Support\Facades\Schema;[m
+[31m-use Illuminate\Database\Schema\Blueprint;[m
+[31m-use Illuminate\Database\Migrations\Migration;[m
+[31m-[m
+[31m-class AddAdminToUserTable extends Migration[m
+[31m-{[m
+[31m-    /**[m
+[31m-     * Run the migrations.[m
+[31m-     *[m
+[31m-     * @return void[m
+[31m-     */[m
+[31m-    public function up()[m
+[31m-    {[m
+[31m-        Schema::table('users', function (Blueprint $table) {[m
+[31m-			$table->char('is_admin', 1)->default(0);[m
+[31m-        });[m
+[31m-    }[m
+[31m-[m
+[31m-    /**[m
+[31m-     * Reverse the migrations.[m
+[31m-     *[m
+[31m-     * @return void[m
+[31m-     */[m
+[31m-    public function down()[m
+[31m-    {[m
+[31m-        Schema::table('users', function (Blueprint $table) {[m
+[31m-			$table->dropColumn('is_admin');[m
+[31m-        });[m
+[31m-    }[m
+[31m-}[m
+[1mdiff --git a/database/migrations/2019_07_11_143411_add_deleted_at_to_users_table.php b/database/migrations/2019_07_11_143411_add_deleted_at_to_users_table.php[m
+[1mdeleted file mode 100644[m
+[1mindex 17c2960..0000000[m
+[1m--- a/database/migrations/2019_07_11_143411_add_deleted_at_to_users_table.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,32 +0,0 @@[m
+[31m-<?php[m
+[31m-[m
+[31m-use Illuminate\Support\Facades\Schema;[m
+[31m-use Illuminate\Database\Schema\Blueprint;[m
+[31m-use Illuminate\Database\Migrations\Migration;[m
+[31m-[m
+[31m-class AddDeletedAtToUsersTable extends Migration[m
+[31m-{[m
+[31m-    /**[m
+[31m-     * Run the migrations.[m
+[31m-     *[m
+[31m-     * @return void[m
+[31m-     */[m
+[31m-    public function up()[m
+[31m-    {[m
+[31m-        Schema::table('users', function (Blueprint $table) {[m
+[31m-			$table->SoftDeletes();[m
+[31m-        });[m
+[31m-    }[m
+[31m-[m
+[31m-    /**[m
+[31m-     * Reverse the migrations.[m
+[31m-     *[m
+[31m-     * @return void[m
+[31m-     */[m
+[31m-    public function down()[m
+[31m-    {[m
+[31m-        Schema::table('users', function (Blueprint $table) {[m
+[31m-			$table->dropColumn('deleted_at');[m
+[31m-        });[m
+[31m-    }[m
+[31m-}[m
+[1mdiff --git a/resources/views/admin/test.blade.php b/resources/views/admin/test.blade.php[m
+[1mdeleted file mode 100644[m
+[1mindex 39d1726..0000000[m
+[1m--- a/resources/views/admin/test.blade.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,5 +0,0 @@[m
+[31m-@extends ('layouts.admin')[m
+[31m-[m
+[31m-@section ('content')[m
+[31m-	<h5>main admin page.</h5>[m
+[31m-@endsection[m
+[1mdiff --git a/resources/views/admin/users.blade.php b/resources/views/admin/users.blade.php[m
+[1mdeleted file mode 100644[m
+[1mindex 7f8165a..0000000[m
+[1m--- a/resources/views/admin/users.blade.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,95 +0,0 @@[m
+[31m-@extends ('layouts.admin')[m
+[31m-[m
+[31m-@section ('content')[m
+[31m-	<h2 class="card-title">Count of users – {{ $count }}</h2>[m
+[31m-[m
+[31m-	<div class="table-responsive">[m
+[31m-	<table class="table table-hover">[m
+[31m-		<caption>List of users</caption>[m
+[31m-		<thead class="thead-dark">[m
+[31m-			<th scope="col">nr.</th>[m
+[31m-			<th scope="col">Name</th>[m
+[31m-			<th scope="col">Email</th>[m
+[31m-			<th scope="col">Role</th>[m
+[31m-			<th scope="col">Edit</th>[m
+[31m-			<th scope="col">Delete</th>[m
+[31m-		</thead>[m
+[31m-		<tbody>[m
+[31m-[m
+[31m-	@foreach ($users as $user)[m
+[31m-		@if ($user->deleted_at != null)[m
+[31m-			<tr class="table-danger">[m
+[31m-		@else[m
+[31m-			<tr>[m
+[31m-		@endif[m
+[31m-				<th scope="row">{{ $user->id }}</th>[m
+[31m-[m
+[31m-				<td>{{ $user->name }}</td>	[m
+[31m-				<td>{{ $user->email }}</td>	[m
+[31m-[m
+[31m-				@if ($user->is_admin == 1)[m
+[31m-					<td>Admin</td>	[m
+[31m-				@else[m
+[31m-					<td>User</td>[m
+[31m-				@endif[m
+[31m-[m
+[31m-				<td>[m
+[31m-					<i class="fas fa-edit"></i>[m
+[31m-				</td>[m
+[31m-				<td>[m
+[31m-			@if ($user->deleted_at != null)[m
+[31m-				<form action="{{ route('admin.restore.user', $user->id) }}"[m
+[31m-						method="post">[m
+[31m-					<button class="btn btn-dark"[m
+[31m-							onclick="return confirm('Restore this user?')">[m
+[31m-						<i class="fas fa-trash-restore"></i>[m
+[31m-					</button>[m
+[31m-					@method ('patch')[m
+[31m-					@csrf[m
+[31m-				</form>[m
+[31m-			@else[m
+[31m-				<form action="{{ route('admin.delete.user', $user->id) }}"[m
+[31m-						method="post">[m
+[31m-					<button class="btn btn-danger"[m
+[31m-							onclick="return confirm('You realy want to kill this user?')">[m
+[31m-						<i class="fas fa-trash"></i>[m
+[31m-					</button>[m
+[31m-					@method ('delete')[m
+[31m-					@csrf[m
+[31m-				</form>[m
+[31m-			@endif[m
+[31m-				</td>[m
+[31m-			</tr>[m
+[31m-	@endforeach[m
+[31m-[m
+[31m-		</tbody>[m
+[31m-	</table>[m
+[31m-[m
+[31m-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">[m
+[31m-  Launch demo modal[m
+[31m-</button>[m
+[31m-[m
+[31m-<!-- Modal -->[m
+[31m-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">[m
+[31m-  <div class="modal-dialog" role="document">[m
+[31m-    <div class="modal-content">[m
+[31m-      <div class="modal-header">[m
+[31m-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>[m
+[31m-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">[m
+[31m-          <span aria-hidden="true">&times;</span>[m
+[31m-        </button>[m
+[31m-      </div>[m
+[31m-      <div class="modal-body">[m
+[31m-        ...[m
+[31m-      </div>[m
+[31m-      <div class="modal-footer">[m
+[31m-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>[m
+[31m-        <button type="button" class="btn btn-primary">Save changes</button>[m
+[31m-      </div>[m
+[31m-    </div>[m
+[31m-  </div>[m
+[31m-</div>[m
+[31m-[m
+[31m-	{{ $users->links() }}[m
+[31m-	</div>[m
+[31m-@endsection[m
+[1mdiff --git a/resources/views/layouts/admin.blade.php b/resources/views/layouts/admin.blade.php[m
+[1mdeleted file mode 100644[m
+[1mindex fdf9bf8..0000000[m
+[1m--- a/resources/views/layouts/admin.blade.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,184 +0,0 @@[m
+[31m-<!DOCTYPE html>[m
+[31m-<html lang="en">[m
+[31m-[m
+[31m-<head>[m
+[31m-	<meta charset="utf-8">[m
+[31m-	<meta name="viewport" content="width=device-width, initial-scale=1,[m
+[31m-		shrink-to-fit=no">[m
+[31m-	<title>{{ env('APP_NAME') }} – admin</title>[m
+[31m-	<link rel="stylesheet" href="http://www.bootstrapdash.com/demo/stellar-admin/jquery/css/style.css">[m
+[31m-</head>[m
+[31m-[m
+[31m-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"[m
+[31m-	integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="[m
+[31m-	crossorigin="anonymous">[m
+[31m-</script>[m
+[31m-[m
+[31m-<script>[m
+[31m-(function($) {[m
+[31m-  'use strict';[m
+[31m-  $(function() {[m
+[31m-    var body = $('body');[m
+[31m-    var contentWrapper = $('.content-wrapper');[m
+[31m-    var scroller = $('.container-scroller');[m
+[31m-    var footer = $('.footer');[m
+[31m-    var sidebar = $('.sidebar');[m
+[31m-[m
+[31m-    //Add active class to nav-link based on url dynamically[m
+[31m-    //Active class can be hard coded directly in html file also as required[m
+[31m-    var current = location.pathname.split("/").slice(-1)[0].replace(/^\/|\/$/g, '');[m
+[31m-    $('.nav li a', sidebar).each(function(){[m
+[31m-        var $this = $(this);[m
+[31m-        if(current === "") {[m
+[31m-[m
+[31m-          //for root url[m
+[31m-          if($this.attr('href').indexOf("{{ route('admin') }}") !== -1){[m
+[31m-              $(this).parents('.nav-item').last().addClass('active');[m
+[31m-              if ($(this).parents('.sub-menu').length) {[m
+[31m-                $(this).closest('.collapse').addClass('show');[m
+[31m-                $(this).addClass('active');[m
+[31m-              }[m
+[31m-          }[m
+[31m-        }[m
+[31m-        else {[m
+[31m-[m
+[31m-          //for other url[m
+[31m-          if($this.attr('href').indexOf(current) !== -1){[m
+[31m-              $(this).parents('.nav-item').last().addClass('active');[m
+[31m-              if ($(this).parents('.sub-menu').length) {[m
+[31m-                $(this).closest('.collapse').addClass('show');[m
+[31m-                $(this).addClass('active');[m
+[31m-              }[m
+[31m-          }[m
+[31m-        }[m
+[31m-    })[m
+[31m-[m
+[31m-		// Sidebar minimize.[m
+[31m-    $('[data-toggle="minimize"]').on("click", function () {[m
+[31m-      if((body.hasClass('sidebar-toggle-display'))||(body.hasClass('sidebar-absolute'))) {[m
+[31m-        body.toggleClass('sidebar-hidden');[m
+[31m-      }[m
+[31m-      else {[m
+[31m-        body.toggleClass('sidebar-icon-only');[m
+[31m-      }[m
+[31m-    });[m
+[31m-  });[m
+[31m-})(jQuery);[m
+[31m-</script>[m
+[31m-[m
+[31m-<!-- Mobile version sidebar. -->[m
+[31m-<script>[m
+[31m-(function($) {[m
+[31m-  'use strict';[m
+[31m-  $(function() {[m
+[31m-    $('[data-toggle="offcanvas"]').on("click", function () {[m
+[31m-      $('.row-offcanvas').toggleClass('active')[m
+[31m-    });[m
+[31m-  });[m
+[31m-})(jQuery);[m
+[31m-</script>[m
+[31m-[m
+[31m-<body>[m
+[31m-	<div class="container-scroller">[m
+[31m-		<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">[m
+[31m-			<div class="text-center navbar-brand-wrapper">[m
+[31m-				<a class="navbar-brand brand-logo" href="{{ route('admin') }}">[m
+[31m-					<img src="images/logo.svg" alt="logo">[m
+[31m-				</a>[m
+[31m-				<a class="navbar-brand brand-logo-mini" href="{{ route('admin') }}">[m
+[31m-					<img src="images/logo_mini.svg" alt="sm-l">[m
+[31m-				</a>[m
+[31m-			</div>[m
+[31m-			<div class="navbar-menu-wrapper d-flex align-items-center">[m
+[31m-				<button class="navbar-toggler navbar-toggler d-none d-lg-block[m
+[31m-						align-self-center mr-2" type="button" data-toggle="minimize">[m
+[31m-					<i class="fas fa-bars"></i>[m
+[31m-				</button>[m
+[31m-				<p class="page-name d-none d-lg-block">Hi, {{ Auth::user()->name }}</p>[m
+[31m-				<button class="navbar-toggler navbar-toggler-right d-lg-none[m
+[31m-						align-self-center ml-auto" type="button" data-toggle="offcanvas">[m
+[31m-					<i class="fas fa-bars"></i>[m
+[31m-				</button>[m
+[31m-			</div>[m
+[31m-		</nav>[m
+[31m-		<!-- partial -->[m
+[31m-		<div class="container-fluid page-body-wrapper">[m
+[31m-			<div class="row row-offcanvas row-offcanvas-right">[m
+[31m-				<!-- partial:partials/_sidebar.html -->[m
+[31m-				<nav class="sidebar sidebar-offcanvas" id="sidebar">[m
+[31m-					<ul class="nav">[m
+[31m-[m
+[31m-						<li class="nav-item nav-category">[m
+[31m-							<span class="nav-link">GENERAL</span>[m
+[31m-						</li>[m
+[31m-						<li class="nav-item">[m
+[31m-							<a class="nav-link" href="{{ route('admin.users') }}">[m
+[31m-								<span class="menu-title">Users</span>[m
+[31m-								<i class="fas fa-users"></i>[m
+[31m-							</a>[m
+[31m-						</li>[m
+[31m-						<li class="nav-item">[m
+[31m-							<a class="nav-link" href="{{ route('admin.test') }}">[m
+[31m-								<span class="menu-title">Test</span>[m
+[31m-							</a>[m
+[31m-						</li>[m
+[31m-[m
+[31m-[m
+[31m-						<li class="nav-item nav-category">[m
+[31m-							<span class="nav-link">SOMETHING</span>[m
+[31m-						</li>[m
+[31m-						<li class="nav-item">[m
+[31m-							<a class="nav-link" href="{{ route('admin.test') }}">[m
+[31m-								<span class="menu-title">page</span>[m
+[31m-							</a>[m
+[31m-						</li>[m
+[31m-						<li class="nav-item">[m
+[31m-							<a class="nav-link" href="#">[m
+[31m-								<span class="menu-title">page</span>[m
+[31m-							</a>[m
+[31m-						</li>[m
+[31m-[m
+[31m-					</ul>[m
+[31m-				</nav>[m
+[31m-				<!-- partial -->[m
+[31m-				<div class="content-wrapper">[m
+[31m-					<!-- Begin first card -->[m
+[31m-					<div class="row">[m
+[31m-						<div class="col-lg-12 grid-margin">[m
+[31m-							<div class="card overflow-hidden dashboard-curved-chart">[m
+[31m-								<div class="card-body mx-3">[m
+[31m-									@yield ('content')[m
+[31m-								</div>[m
+[31m-								<div id="curved-line-chart" class="float-chart[m
+[31m-									float-chart-mini">[m
+[31m-								</div>[m
+[31m-							</div>[m
+[31m-						</div>[m
+[31m-					</div>[m
+[31m-				<!-- ROW ENDS -->[m
+[31m-				</div>[m
+[31m-				<!-- content-wrapper ends -->[m
+[31m-				<!-- partial:partials/_footer.html -->[m
+[31m-				<footer class="footer">[m
+[31m-					<div class="container-fluid clearfix">[m
+[31m-						<span class="text-muted d-block text-center text-sm-left[m
+[31m-								d-sm-inline-block">[m
+[31m-							Footbar.[m
+[31m-						</span>[m
+[31m-						<span class="float-none float-sm-right d-block mt-1 mt-sm-0[m
+[31m-								text-center">[m
+[31m-							footbar 2[m
+[31m-						</span>[m
+[31m-					</div>[m
+[31m-				</footer>[m
+[31m-		<!-- partial -->[m
+[31m-			</div>[m
+[31m-	<!-- row-offcanvas ends -->[m
+[31m-		</div>[m
+[31m-	<!-- page-body-wrapper ends -->[m
+[31m-	</div>[m
+[31m-<script src="https://kit.fontawesome.com/2bc6e3108f.js"></script>[m
+[31m-[m
+[31m-</body>[m
+[31m-[m
+[31m-</html>[m
+[1mdiff --git a/routes/admin.php b/routes/admin.php[m
+[1mindex 239cfdf..831dea0 100644[m
+[1m--- a/routes/admin.php[m
+[1m+++ b/routes/admin.php[m
+[36m@@ -7,16 +7,3 @@[m [mRoute::resource('admin', 'AdminController')[m
+     ->only(['index', 'create', 'store', 'edit', 'update']);[m
+ Route::get('admin/destroy/{id}', 'AdminController@destroy')->name('admin.destroy');[m
+ Route::get('admin/block/{id}', 'AdminController@block')->name('admin.block');[m
+[31m-[m
+[31m-Route::get('/', 'Admin\BaseController@index')->name('admin');[m
+[31m-[m
+[31m-Route::get('/test', 'Admin\BaseController@index')->name('admin.test');[m
+[31m-[m
+[31m-// Action's with users.[m
+[31m-Route::get('users', 'Admin\BaseController@getUsers')->name('admin.users');[m
+[31m-[m
+[31m-Route::delete('deleteUser/{id}', 'Admin\BaseController@deleteUser')[m
+[31m-	->name('admin.delete.user');[m
+[31m-[m
+[31m-Route::patch('restoreUser/{id}', 'Admin\BaseController@restoreUser')[m
+[31m-	->name('admin.restore.user');[m
