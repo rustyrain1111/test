@@ -102,4 +102,13 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
+    public function welcome() {
+        $user = new User();
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->password = Hash::make($request->get('password'));
+        $user->save();
+        return view('welcome');
+    }
+
 }

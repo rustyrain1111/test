@@ -84,6 +84,7 @@
                         <th>Никнейм</th>
                         <th>Email</th>
                         <th>Дата регистрации</th>
+                        <!-- <th>Права доступа</th> -->
                         <th>Редактирование</th>
                     </tr>
                     </thead>
@@ -91,11 +92,21 @@
                     @foreach($users as $user)
                         <tr class="user{{ (bool)$user->is_block ? ' text-danger' : '' }}">
                             <td>{{ $user->id }}</td>
-                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->name }}
+                                @if ($user->is_admin == 1)
+                                    <div class="badge badge-light">A</div>
+                                @endif    
+                            </td>
                             <td>{{ $user->email  }}</td>
                             <td>{{ $user->created_at }}</td>
-                            <td>
-                                <div class="btn-group">
+                            <td><a  class="btn btn-danger" 
+                                    href="{{ route('admin.destroy', $user->id) }}">Удалить</a>
+                                <a href="{{ route('admin.edit', $user->id) }}"
+                                   class="btn btn-primary">Изменить</a>    
+                            </td>
+                                                            
+                                    
+                               <!--  <div class="btn-group">
                                     <button type="button" class="btn btn-danger">Действие</button>
                                     <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
                                         <span class="caret"></span>
@@ -104,12 +115,11 @@
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="{{ route('admin.edit', ['id' => $user->id]) }}">Изменить</a></li>
                                         <li><a href="{{ route('admin.destroy', ['id' => $user->id]) }}">Удалить</a></li>
-                                        <li><a href="{{ route('admin.block', ['id' => $user->id]) }}">{{ (bool)$user->is_block ? 'Розблокировать' : 'Заблокировать' }}</a></li>
+                                        <li><a href="{{ route('admin.block', ['id' => $user->id]) }}">{{ (bool)$user->is_block ? 'Рaзблокировать' : 'Заблокировать' }}</a></li>
                                         <li class="divider"></li>
                                         <li><a href="{{ route('admin.create') }}">Создать</a></li>
                                     </ul>
-                                </div>
-                            </td>
+                                </div> -->
                         </tr>
                     @endforeach
                     </tbody>

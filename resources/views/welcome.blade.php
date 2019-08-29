@@ -93,6 +93,12 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                     <a href="{{ route('table') }}">Go to</a>
+                    @auth
+                    @if(Auth::user()->is_admin)
+                        <a href="{{ route('admin.index') }}">Admin Panel</a>
+                    @endif
+                    @endauth
+                    
                 </div>
             </div>
         </div>
