@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddDeletedAtToUsersTable extends Migration
+class CreateAliasForUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddDeletedAtToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-			$table->softDeletes();
+        Schema::create('aliases', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->integer('number');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddDeletedAtToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-			$table->dropColumn('deleted_at');
-        });
+        Schema::dropIfExists('aliases');
     }
 }
