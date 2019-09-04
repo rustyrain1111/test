@@ -87,7 +87,7 @@
                 </ul>
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>СОХРАНЕННЫЕ ОТЧЕТЫ</span>
+                    <span></span>
                     <a class="d-flex align-items-center text-muted" href="#">
                         <span data-feather="plus-circle"></span>
                     </a>
@@ -148,15 +148,17 @@
                     </thead>
                     <tbody>
                     @foreach($users as $user)
-                        <tr class="{{ (bool)$user->is_block ? 'alert alert-danger' : ''}}">
+                        <tr class="">
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}
+                                @if ($user->is_block)
+                                    <div class="badge badge-warning">ban</div>
+                                @endif
                                 @if ($user->deleted_at)
                                     <div class="badge badge-danger">dell</div>
                                 @endif
                                 @if ($user->is_admin == 1)
                                     <div class="badge badge-success">A</div>
-
                                 @endif
                             </td>
                             <td>{{ $user->email  }}</td>
