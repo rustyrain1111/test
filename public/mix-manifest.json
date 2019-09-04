@@ -1,5 +1,9 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/css/admin.css": "/css/admin.css"
+    "/css/admin.css": "/css/admin.css",
+    "/js/dashboard.js": "/js/dashboard.js",
+    "/js/bootstrap.bundle.min.js": "/js/bootstrap.bundle.min.js",
+    "/css/bootstrap.min.css": "/css/bootstrap.min.css",
+    "/css/dashboard.css": "/css/dashboard.css"
 }

@@ -20,7 +20,6 @@
                                 <th>First Name</th>
                                 <th>Email</th>
                                 <th>Date of registration</th>
-                                <th>Access rights</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -30,20 +29,15 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email  }}</td>
                                     <td>{{ $user->created_at }}</td>
-                            @if ($user->is_admin == 1 )
-                                    <td>Admin</td>
-                            @else
-                                    <td>User</td>        
-                            @endif
+                                    <td>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-                            <div class="btn btn-primary">Go back</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection

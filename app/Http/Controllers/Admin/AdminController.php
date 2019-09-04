@@ -29,7 +29,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        $users = User::get();
+        $users = User::withTrashed()->get();
         return view(
             'admin.dashboard.index',
             ['users' => $users]
@@ -81,34 +81,28 @@ class AdminController extends Controller
     public function block(Request $request,$id)
     {
         $user = User::find($id);
-        if ((bool)$user->is_block) {
+        if ((bool)$user->is_block)
+        {
             $user->is_block = 0;
-        } else {
+        }
+        else
+        {
             $user->is_block = 1;
         }
         $user->save();
         return redirect('admin/admin');
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         User::where('id', $id)->delete();
-
         return redirect()->back();
     }
 
-    public function restore($id) {
+    public function restore($id)
+    {
         User::where('id', $id)->restore();
-
         return redirect()->back();
-    }
-
-    public function welcome() {
-        $user = new User();
-        $user->name = $request->get('name');
-        $user->email = $request->get('email');
-        $user->password = Hash::make($request->get('password'));
-        $user->save();
-        return view('welcome');
     }
 
 }

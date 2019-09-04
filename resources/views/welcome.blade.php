@@ -8,7 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        <link href="{{asset('css.bootstrap.min.css')}}" rel="stylesheet">
         <!-- Styles -->
         <style>
             html, body {
@@ -78,7 +78,6 @@
                     @endauth
                 </div>
             @endif
-
             <div class="content">
                 <div class="title m-b-md">
                     Laravel
@@ -92,13 +91,6 @@
                     <a href="https://nova.laravel.com">Nova</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
-                    <a href="{{ route('table') }}">Go to</a>
-                    @auth
-                    @if(Auth::user()->is_admin)
-                        <a href="{{ route('admin.index') }}">Admin Panel</a>
-                    @endif
-                    @endauth
-                    
                 </div>
             </div>
         </div>

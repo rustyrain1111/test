@@ -31,41 +31,4 @@ class HomeController extends Controller
             ['users' => $users]
         );
     }
-//    public function create()
-//    {
-//        return view(
-//            'user.edit',
-//            ['user' => null]
-//        );
-//    }
-//
-//    public function edit($id)
-//    {
-//        $user = User::find($id);
-//
-//        return view(
-//            'user.edit',
-//            ['user' => $user]
-//        );
-//    }
-//
-//    public function store(Request $request)
-//    {
-//        $user = new User();
-//        $user->name = $request->get('name');
-//        $user->email = $request->get('email');
-//        $user->password = Hash::make($request->get('password'));
-//        $user->save();
-//        return redirect('home');
-//    }
-//
-//    public function update(Request $request, $id)
-//    {
-//        $user = User::find($id);
-//        $user->name = $request->get('name');
-//        $user->email = $request->get('email');
-//        $user->password = Hash::make($request->get('password'));
-//        $user->save();
-//        return redirect('home');
-//    }
 }

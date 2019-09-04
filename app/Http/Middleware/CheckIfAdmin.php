@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
 
 class CheckIfAdmin
 {
@@ -24,7 +25,13 @@ class CheckIfAdmin
         if (auth()->user()->isAdmin()) {
             return $next($request);
         }
-
         return redirect()->back();
     }
+
+//    protected function authenticated(Request $request, $user)
+//    {
+//        if ($user->isAdmin()) {
+//            return redirect()->route('admin.index');
+//        }
+//    }
 }

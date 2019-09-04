@@ -22,5 +22,3 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/table', 'AliasController@index')->name('table');

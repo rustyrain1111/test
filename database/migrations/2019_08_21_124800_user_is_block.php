@@ -21,9 +21,6 @@ class UserIsBlock extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('is_block');
-
-        });
+        Schema::dropIfExists('users');
     }
 }
