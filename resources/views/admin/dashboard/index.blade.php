@@ -9,30 +9,32 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Dashboard</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{ URL::asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{{ URL::asset('css/dashboard.css')}}" rel="stylesheet">
-
-    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="{{'https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js'}}"></script>
     <script src="{{'https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js'}}"></script>
     <![endif]-->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 </head>
 
 <body>
+
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Admin panel</a>
+        <a class="navbar-brand" href="/">Admin panel</a>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Настройки</a></li>
@@ -89,21 +91,33 @@
                     </thead>
                     <tbody>
                     @foreach($users as $user)
-                        <tr class="user{{ (bool)$user->is_block ? ' text-danger' : '' }}">
-                            <td>{{ $user->id }}</td>
-                            <td>{{ $user->name }}</td>
+                        <tr class="{{ (bool)$user->is_block ? 'alert alert-danger' : ''}}">
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->name }}
+                    @if ($user->deleted_at)
+                        <div class="badge badge-danger">dell</div>
+                    @endif
+                    @if ($user->is_admin == 1)
+                        <div class="badge badge-success">A</div>
+
+                    @endif
+                            </td>
                             <td>{{ $user->email  }}</td>
                             <td>{{ $user->created_at }}</td>
                             <td>
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-danger">Действие</button>
-                                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+                                    <button type="button" class="btn btn-primary">Доп. действия</button>
+                                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
                                         <span class="caret"></span>
                                         <span class="sr-only">Меню с переключением</span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="{{ route('admin.edit', ['id' => $user->id]) }}">Изменить</a></li>
+                                @if(!$user->deleted_at)
                                         <li><a href="{{ route('admin.destroy', ['id' => $user->id]) }}">Удалить</a></li>
+                                @else
+                                        <li><a href="{{ route('admin.restore', ['id' => $user->id]) }}">Восстановить</a></li>
+                                @endif
                                         <li><a href="{{ route('admin.block', ['id' => $user->id]) }}">{{ (bool)$user->is_block ? 'Розблокировать' : 'Заблокировать' }}</a></li>
                                         <li class="divider"></li>
                                         <li><a href="{{ route('admin.create') }}">Создать</a></li>
@@ -123,7 +137,7 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="{{'https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'}}"></script>
-<script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
-<script src="{{URL::asset('js/docs.min.js')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/docs.min.js')}}"></script>
 </body>
 </html>
