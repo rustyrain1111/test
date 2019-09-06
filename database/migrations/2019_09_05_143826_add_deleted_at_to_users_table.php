@@ -4,14 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UserIsBlock extends Migration
+class AddDeletedAtToUsersTable extends Migration
 {
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->char('is_admin','1')->default(0);
-            $table->char('is_block','1')->default(0)->after('is_admin');
-
+            $table->softDeletes();
         });
     }
 
@@ -22,6 +25,8 @@ class UserIsBlock extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('deleted_at');
+        });
     }
 }

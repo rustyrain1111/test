@@ -13,7 +13,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form action="{{ $user ? route('admin.update', ['id' => $user->id]) : route('admin.store') }}" method="POST">
+                        <form action="{{ $user ? route('user.update', ['id' => $user->id]) : route('user.store') }}" method="POST">
                             @csrf
                             @if($user)
                                 @method('PUT')

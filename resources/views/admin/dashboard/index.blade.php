@@ -79,15 +79,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{route('newAnnouncement')}}">
                             <span data-feather="layers"></span>
-                            Интеграции
+                            Добавить пост на главную
                         </a>
                     </li>
                 </ul>
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span></span>
+                    <span>СОХРАНЕННЫЕ ОТЧЕТЫ</span>
                     <a class="d-flex align-items-center text-muted" href="#">
                         <span data-feather="plus-circle"></span>
                     </a>
@@ -152,7 +152,7 @@
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}
                                 @if ($user->is_block)
-                                    <div class="badge badge-warning">ban</div>
+                                    <div class="badge badge-warning">banned</div>
                                 @endif
                                 @if ($user->deleted_at)
                                     <div class="badge badge-danger">dell</div>
@@ -170,15 +170,15 @@
                                         Доп. действия
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="{{ route('admin.edit', ['id' => $user->id]) }}">Изменить</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('user.edit', ['id' => $user->id]) }}">Изменить</a></li>
                                         @if(!$user->deleted_at)
-                                            <li><a class="dropdown-item" href="{{ route('admin.destroy', ['id' => $user->id]) }}">Удалить</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('user.destroy', ['id' => $user->id]) }}">Удалить</a></li>
                                         @else
-                                            <li><a class="dropdown-item" href="{{ route('admin.restore', ['id' => $user->id]) }}">Восстановить</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('user.restore', ['id' => $user->id]) }}">Восстановить</a></li>
                                         @endif
-                                        <li><a class="dropdown-item" href="{{ route('admin.block', ['id' => $user->id]) }}">{{ (bool)$user->is_block ? 'Розблокировать' : 'Заблокировать' }}</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('user.block', ['id' => $user->id]) }}">{{ (bool)$user->is_block ? 'Розблокировать' : 'Заблокировать' }}</a></li>
                                         <li class="divider"></li>
-                                        <li><a class="dropdown-item" href="{{ route('admin.create') }}">Создать</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('user.create') }}">Создать</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -190,7 +190,6 @@
         </main>
     </div>
 </div>
-
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/docs/4.3.1/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="{{asset('js/bootstrap.bundle.min.js')}}" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
