@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Announcements;
+use App\Models\Announcement;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -18,68 +20,7 @@ class AnnouncementController extends Controller
       return view('admin');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
     {
         //
     }
@@ -87,5 +28,42 @@ class AnnouncementController extends Controller
     public function newAnnouncement()
     {
         return view('announcement.new_announcement');
+    }
+
+    public function create()
+    {
+        return view(
+            'admin.announcement.new_announcement',
+            ['announcement' => null]
+        );
+    }
+
+    public function edit($id)
+    {
+        $announcement = Announcements::find($id);
+
+        return view(
+            'admin.announcement.new_announcement',
+            ['announcement' => $announcement]
+        );
+    }
+
+    public function store(Request $request)
+    {
+        $announcement = new Announcement();
+        $announcement->title = $request->get('title');
+        $announcement->body = $request->get('body');
+        $announcement->save();
+        return redirect('admin/users');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $announcement = Announcements::find($id);
+        $announcement = new Announcement();
+        $announcement->title = $request->get('title');
+        $announcement->body = $request->get('body');
+        $announcement->save();
+        return redirect('admin/users');
     }
 }

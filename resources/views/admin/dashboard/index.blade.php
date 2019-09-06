@@ -79,7 +79,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('newAnnouncement')}}">
+                        <a class="nav-link" href="{{route('new.announcement')}}">
                             <span data-feather="layers"></span>
                             Добавить пост на главную
                         </a>
@@ -87,7 +87,7 @@
                 </ul>
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>СОХРАНЕННЫЕ ОТЧЕТЫ</span>
+                    <span>Список постов</span>
                     <a class="d-flex align-items-center text-muted" href="#">
                         <span data-feather="plus-circle"></span>
                     </a>
